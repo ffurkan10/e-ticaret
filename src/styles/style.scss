@@ -1,0 +1,21 @@
+@import "./home.scss";
+@import "./items.scss";
+@import "./navbar";
+@import "./footer.scss";
+@import "./loading.scss";
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  &__footer {
+    margin-top: auto;
+  }
+}
