@@ -19,9 +19,7 @@ function App() {
     axios
       .get("https://localhost:7249/api/Default/urunler")
       .then((response) => {
-        setTimeout(() => {
-          setProducts(response.data);
-        }, 2000);
+        setProducts(response.data);
 
         setLoading(false);
       })
@@ -37,9 +35,7 @@ function App() {
       .get(`https://localhost:7249/api/Default/urun-sil?id=${productId}`)
       .then((response) => {
         console.log(response.data);
-        setTimeout(() => {
-          fetchProducts();
-        }, 1000);
+        fetchProducts();
         setLoading(false);
       })
       .catch((error) => {
