@@ -91,6 +91,7 @@ function App() {
               path="/new"
               element={
                 <NewProduct
+                  loading={loading}
                   addProduct={addProduct}
                   name={name}
                   setName={setName}

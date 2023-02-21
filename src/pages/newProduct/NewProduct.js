@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../../components/loading/Loading";
 
 const NewProduct = ({
   name,
@@ -16,6 +17,7 @@ const NewProduct = ({
   marka,
   setMarka,
   addProduct,
+  loading,
 }) => {
   const changeName = (e) => {
     setName(e.currentTarget.value);
@@ -38,6 +40,10 @@ const NewProduct = ({
   const changeMarka = (e) => {
     setMarka(e.currentTarget.value);
   };
+
+  if (loading === true) {
+    return <Loading />;
+  }
 
   return (
     <div className="new">
