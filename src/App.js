@@ -5,10 +5,18 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
+import NewProduct from "./pages/newProduct/NewProduct";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [kupon, setKupon] = useState("");
+  const [stok, setStok] = useState(false);
+  const [marka, setMarka] = useState("");
 
   useEffect(() => {
     fetchProducts();
@@ -21,6 +29,24 @@ function App() {
       .then((response) => {
         setProducts(response.data);
 
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const addProduct = () => {
+    setLoading(true);
+
+    axios
+      .get(
+        `https://localhost:7249/api/Default/urun-ekle?urunadi=${name}&urunkategorisi=${category}&urunfiyati=${price}&indirimoran%C4%B1=${discount}&kuponkodu=${kupon}&urunsatisdurumu=${stok}&urunmarka=${marka}
+  `
+      )
+      .then((response) => {
+        console.log(response.data);
+        fetchProducts();
         setLoading(false);
       })
       .catch((error) => {
@@ -58,6 +84,28 @@ function App() {
                   products={products}
                   loading={loading}
                   deleteProduct={deleteProduct}
+                />
+              }
+            />
+            <Route
+              path="/new"
+              element={
+                <NewProduct
+                  addProduct={addProduct}
+                  name={name}
+                  setName={setName}
+                  category={category}
+                  price={price}
+                  discount={discount}
+                  kupon={kupon}
+                  stok={stok}
+                  marka={marka}
+                  setCategory={setCategory}
+                  setDiscount={setDiscount}
+                  setPrice={setPrice}
+                  setKupon={setKupon}
+                  setStok={setStok}
+                  setMarka={setMarka}
                 />
               }
             />

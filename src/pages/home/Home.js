@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Loading from "../../components/loading/Loading";
 import Items from "../../components/items/Items";
 import * as IconFa from "react-icons/fa";
@@ -7,9 +7,15 @@ import * as IconAi from "react-icons/ai";
 import blueContent from "../../assets/items.jpg";
 
 const Home = ({ products, deleteProduct, loading }) => {
+  const targetRef = useRef(null);
+
   if (loading) {
     return <Loading />;
   }
+
+  const handleClick = () => {
+    targetRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="home">
@@ -21,11 +27,17 @@ const Home = ({ products, deleteProduct, loading }) => {
             mağazamıza hoşgeldiniz.{" "}
           </p>
           <button>Daha fazla bilgi</button>
-          <IconAi.AiOutlineArrowDown size={40} />
+          <span>Tıkla</span>
+          <IconAi.AiOutlineArrowDown
+            style={{ cursor: "pointer" }}
+            onClick={handleClick}
+            size={40}
+            className="home__view__welcome__btn"
+          />
         </div>
       </div>
 
-      <div className="home__container">
+      <div ref={targetRef} className="home__container">
         <div className="home__container__content">
           <div className="home__container__content__header">
             <h2>Ürünlerimiz</h2>

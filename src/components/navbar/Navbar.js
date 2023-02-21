@@ -16,6 +16,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navbar__container__list__feature">
+            <Link to="/new">
+              <button>Ürün Ekle</button>
+            </Link>
+          </li>
+          <li className="navbar__container__list__feature">
             <a
               href="https://www.linkedin.com/in/ffurkan/"
               target="_blank"

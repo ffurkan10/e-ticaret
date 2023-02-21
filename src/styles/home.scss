@@ -18,6 +18,9 @@
       flex-direction: column;
       color: white;
       padding: 20px;
+      span {
+        font-size: 10px;
+      }
       h1 {
         font-size: 40px;
       }
@@ -35,6 +38,9 @@
         background-color: #fff;
         color: #396afc;
         margin-bottom: 20px;
+      }
+      &__btn {
+        animation: shake 2s infinite;
       }
     }
   }
@@ -121,5 +127,26 @@
         }
       }
     }
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate(0, -5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
